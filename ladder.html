@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SPX — سلّم السيولة</title>
+<style>
+  :root {
+    --bg:#0b1016; --panel:#111823; --line:#1d2836; --text:#e6edf5; --muted:#7d8fa6;
+    --call:#16c784; --call-dim:#16c78433; --put:#e3405f; --put-dim:#e3405f33;
+    --spot:#f0b90b;
+  }
+  * { box-sizing:border-box; }
+  body {
+    margin:0; background:var(--bg); color:var(--text);
+    font:14px/1.4 -apple-system,"Segoe UI",Tahoma,sans-serif;
+    padding:16px; display:flex; justify-content:center;
+  }
+  .wrap { width:100%; max-width:560px; }
+  header {
+    display:flex; align-items:center; gap:12px; flex-wrap:wrap;
+    background:var(--panel); border:1px solid var(--line); border-radius:12px;
+    padding:12px 14px; margin-bottom:10px;
+  }
+  .sym { font-weight:700; letter-spacing:.5px; }
+  .now { color:var(--spot); font-size:20px; font-weight:700; font-variant-numeric:tabular-nums; }
+  .meta { color:var(--muted); font-size:12px; margin-inline-start:auto; text-align:start; }
+  .ladder {
+    background:var(--panel); border:1px solid var(--line); border-radius:12px;
+    overflow:hidden;
+  }
+  .row {
+    display:grid; grid-template-columns:112px 1fr 56px 56px;
+    align-items:center; gap:8px; padding:3px 10px;
+    border-bottom:1px solid #131b26; font-variant-numeric:tabular-nums;
+  }
+  .row:last-child { border-bottom:none; }
+  .strike { color:var(--muted); font-size:12.5px; display:flex; align-items:center;
+             gap:5px; justify-content:flex-start; }
+  .track { position:relative; height:16px; display:flex; align-items:center; }
+  .bar { height:13px; border-radius:2px; display:block; }
+  .call .bar { background:linear-gradient(90deg,var(--call-dim),var(--call)); }
+  .put  .bar { background:linear-gradient(90deg,var(--put-dim),var(--put)); }
+  .bar { position:relative; }
+  .size { position:absolute; inset-inline-end:100%; top:50%; transform:translateY(-50%);
+           font-size:10.5px; color:var(--muted); padding-inline:6px; white-space:nowrap; }
+  .spot-label { white-space:nowrap; }
+  .px { text-align:end; font-size:12.5px; }
+  .call-px { color:var(--call); }
+  .put-px { color:var(--put); }
+  .keylevel { background:#141d2a; }
+  .keylevel .track::after {
+    content:""; position:absolute; inset-inline:0; top:50%;
+    border-top:1px dashed #4a5b70;
+  }
+  .tag { font-size:9px; white-space:nowrap; color:#9fb0c6; background:#1b2634; border-radius:4px; padding:1px 4px; }
+  .spot { background:#1a1608; }
+  .spot .strike { color:var(--spot); font-weight:700; font-size:13px; }
+  .spot .px { color:var(--spot); font-size:11px; }
+  .spot-line { display:block; width:100%; border-top:1px dashed var(--spot); }
+  footer { margin-top:10px; }
+  .best {
+    display:flex; gap:8px; justify-content:center; margin-bottom:8px; flex-wrap:wrap;
+  }
+  .best div {
+    background:var(--panel); border:1px solid var(--line); border-radius:999px;
+    padding:8px 16px; font-size:13px;
+  }
+  .best .c { border-color:var(--call); color:var(--call); }
+  .best .p { border-color:var(--put); color:var(--put); }
+  .chips { display:flex; gap:6px; justify-content:center; flex-wrap:wrap; }
+  .chip { font-size:11.5px; border-radius:999px; padding:5px 11px; border:1px solid var(--line); color:var(--muted); }
+  .chip.c { border-color:#16c78455; color:var(--call); }
+  .chip.p { border-color:#e3405f55; color:var(--put); }
+  .note { color:var(--muted); font-size:11px; text-align:center; margin-top:10px; }
+  @media (max-width:420px) {
+    .row { grid-template-columns:96px 1fr 48px 48px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <span class="sym">SPX</span>
+    <span class="now">7650.5</span>
+    <span class="meta">انتهاء 2026-09-21<br>2026-09-19 14:05:39 · حجم الشريط: العقود المفتوحة</span>
+  </header>
+
+  <div class="ladder">
+<div class="row call" title="7725 · call OI 2265 · put OI 392"><div class="strike">7725</div><div class="track"><span class="bar" style="width:21.1%"><span class="size">2.3K</span></span></div><div class="px call-px">0.70</div><div class="px put-px">67.25</div></div>
+<div class="row call" title="7720 · call OI 2095 · put OI 361"><div class="strike">7720</div><div class="track"><span class="bar" style="width:19.5%"><span class="size">2K</span></span></div><div class="px call-px">0.93</div><div class="px put-px">62.45</div></div>
+<div class="row call" title="7715 · call OI 2195 · put OI 204"><div class="strike">7715</div><div class="track"><span class="bar" style="width:19.0%"><span class="size">2.2K</span></span></div><div class="px call-px">1.73</div><div class="px put-px">59.90</div></div>
+<div class="row call" title="7710 · call OI 2696 · put OI 135"><div class="strike">7710</div><div class="track"><span class="bar" style="width:22.5%"><span class="size">2.7K</span></span></div><div class="px call-px">2.23</div><div class="px put-px">53.25</div></div>
+<div class="row call" title="7705 · call OI 3206 · put OI 81"><div class="strike">7705</div><div class="track"><span class="bar" style="width:26.1%"><span class="size">3.2K</span></span></div><div class="px call-px">2.88</div><div class="px put-px">51.95</div></div>
+<div class="row call" title="7700 · call OI 8600 · put OI 3999"><div class="strike">7700</div><div class="track"><span class="bar" style="width:100.0%"><span class="size">8.6K</span></span></div><div class="px call-px">3.50</div><div class="px put-px">44.45</div></div>
+<div class="row call" title="7695 · call OI 2627 · put OI 125"><div class="strike">7695</div><div class="track"><span class="bar" style="width:21.8%"><span class="size">2.6K</span></span></div><div class="px call-px">4.35</div><div class="px put-px">39.60</div></div>
+<div class="row call" title="7690 · call OI 1584 · put OI 356"><div class="strike">7690</div><div class="track"><span class="bar" style="width:15.4%"><span class="size">1.6K</span></span></div><div class="px call-px">5.70</div><div class="px put-px">36.15</div></div>
+<div class="row call keylevel" title="7685 · call OI 1983 · put OI 254"><div class="strike">7685<span class="tag">جدار الكول</span></div><div class="track"><span class="bar" style="width:17.8%"><span class="size">2.0K</span></span></div><div class="px call-px">7.30</div><div class="px put-px">32.20</div></div>
+<div class="row call" title="7680 · call OI 1599 · put OI 128"><div class="strike">7680</div><div class="track"><span class="bar" style="width:13.7%"><span class="size">1.6K</span></span></div><div class="px call-px">8.95</div><div class="px put-px">29.50</div></div>
+<div class="row call" title="7675 · call OI 2246 · put OI 734"><div class="strike">7675</div><div class="track"><span class="bar" style="width:23.7%"><span class="size">2.2K</span></span></div><div class="px call-px">10.60</div><div class="px put-px">26.10</div></div>
+<div class="row call" title="7670 · call OI 1298 · put OI 247"><div class="strike">7670</div><div class="track"><span class="bar" style="width:12.3%"><span class="size">1.3K</span></span></div><div class="px call-px">12.70</div><div class="px put-px">23.90</div></div>
+<div class="row call" title="7665 · call OI 1182 · put OI 173"><div class="strike">7665</div><div class="track"><span class="bar" style="width:10.8%"><span class="size">1.2K</span></span></div><div class="px call-px">15.50</div><div class="px put-px">21.55</div></div>
+<div class="row call" title="7660 · call OI 1291 · put OI 303"><div class="strike">7660</div><div class="track"><span class="bar" style="width:12.7%"><span class="size">1.3K</span></span></div><div class="px call-px">17.45</div><div class="px put-px">18.95</div></div>
+<div class="row call" title="7655 · call OI 2475 · put OI 300"><div class="strike">7655</div><div class="track"><span class="bar" style="width:22.0%"><span class="size">2.5K</span></span></div><div class="px call-px">21.10</div><div class="px put-px">16.40</div></div>
+<div class="row spot"><div class="strike">7650.5</div><div class="track"><span class="spot-line"></span></div><div class="px spot-label" style="grid-column:span 2">السعر الحالي</div></div>
+<div class="row put" title="7650 · call OI 2820 · put OI 1523"><div class="strike">7650</div><div class="track"><span class="bar" style="width:34.5%"><span class="size">1.5K</span></span></div><div class="px call-px">23.35</div><div class="px put-px">13.85</div></div>
+<div class="row put keylevel" title="7645 · call OI 1505 · put OI 1350"><div class="strike">7645<span class="tag">ماكس بين</span></div><div class="track"><span class="bar" style="width:22.7%"><span class="size">1.4K</span></span></div><div class="px call-px">27.90</div><div class="px put-px">13.00</div></div>
+<div class="row put" title="7640 · call OI 1937 · put OI 1427"><div class="strike">7640</div><div class="track"><span class="bar" style="width:26.7%"><span class="size">1.4K</span></span></div><div class="px call-px">29.10</div><div class="px put-px">10.65</div></div>
+<div class="row put" title="7635 · call OI 1159 · put OI 899"><div class="strike">7635</div><div class="track"><span class="bar" style="width:16.3%"><span class="size">899</span></span></div><div class="px call-px">33.70</div><div class="px put-px">10.20</div></div>
+<div class="row put" title="7630 · call OI 996 · put OI 2074"><div class="strike">7630</div><div class="track"><span class="bar" style="width:24.4%"><span class="size">2K</span></span></div><div class="px call-px">37.90</div><div class="px put-px">8.25</div></div>
+<div class="row put keylevel" title="7625 · call OI 1140 · put OI 2822"><div class="strike">7625<span class="tag">جدار البوت</span></div><div class="track"><span class="bar" style="width:31.4%"><span class="size">2.8K</span></span></div><div class="px call-px">43.30</div><div class="px put-px">8.15</div></div>
+<div class="row put" title="7620 · call OI 438 · put OI 1881"><div class="strike">7620</div><div class="track"><span class="bar" style="width:18.4%"><span class="size">1.9K</span></span></div><div class="px call-px">47.30</div><div class="px put-px">7.25</div></div>
+<div class="row put" title="7615 · call OI 311 · put OI 1459"><div class="strike">7615</div><div class="track"><span class="bar" style="width:14.0%"><span class="size">1.5K</span></span></div><div class="px call-px">51.15</div><div class="px put-px">6.60</div></div>
+<div class="row put" title="7610 · call OI 324 · put OI 1457"><div class="strike">7610</div><div class="track"><span class="bar" style="width:14.1%"><span class="size">1.5K</span></span></div><div class="px call-px">53.65</div><div class="px put-px">5.65</div></div>
+<div class="row put" title="7605 · call OI 269 · put OI 1198"><div class="strike">7605</div><div class="track"><span class="bar" style="width:11.6%"><span class="size">1.2K</span></span></div><div class="px call-px">60.90</div><div class="px put-px">5.15</div></div>
+<div class="row put" title="7600 · call OI 815 · put OI 3228"><div class="strike">7600</div><div class="track"><span class="bar" style="width:32.1%"><span class="size">3.2K</span></span></div><div class="px call-px">64.50</div><div class="px put-px">4.50</div></div>
+<div class="row put" title="7595 · call OI 162 · put OI 1148"><div class="strike">7595</div><div class="track"><span class="bar" style="width:10.4%"><span class="size">1.1K</span></span></div><div class="px call-px">68.50</div><div class="px put-px">4.30</div></div>
+<div class="row put" title="7590 · call OI 123 · put OI 1593"><div class="strike">7590</div><div class="track"><span class="bar" style="width:13.6%"><span class="size">1.6K</span></span></div><div class="px call-px">71.85</div><div class="px put-px">3.35</div></div>
+<div class="row put" title="7585 · call OI 531 · put OI 2022"><div class="strike">7585</div><div class="track"><span class="bar" style="width:20.3%"><span class="size">2K</span></span></div><div class="px call-px">79.70</div><div class="px put-px">3.55</div></div>
+<div class="row put" title="7580 · call OI 126 · put OI 1298"><div class="strike">7580</div><div class="track"><span class="bar" style="width:11.3%"><span class="size">1.3K</span></span></div><div class="px call-px">82.30</div><div class="px put-px">2.78</div></div>
+<div class="row put" title="7575 · call OI 959 · put OI 2486"><div class="strike">7575</div><div class="track"><span class="bar" style="width:27.3%"><span class="size">2.5K</span></span></div><div class="px call-px">90.50</div><div class="px put-px">2.53</div></div>
+  </div>
+
+  <footer>
+    <div class="best">
+      <div class="c">أقوى كول: 8.6K · 7700</div>
+      <div class="p">أقوى بوت: 3.2K · 7600</div>
+    </div>
+    <div class="chips"><span class="chip c">3.2K · 7705</span><span class="chip c">2.7K · 7710</span><span class="chip c">2.6K · 7695</span><span class="chip p">2.8K · 7625</span><span class="chip p">2.5K · 7575</span><span class="chip p">2K · 7630</span></div>
+    <div class="note">جدار الكول 7685 · جدار البوت 7625 · ماكس بين 7645</div>
+  </footer>
+</div>
+</body>
+</html>
